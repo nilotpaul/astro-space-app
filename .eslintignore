@@ -1,0 +1,5 @@
+node_modules
+public
+src/types
+dist
+.astro

@@ -1,0 +1,15 @@
+{
+  "plugins": [],
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "prefer-const": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-unused-vars": "warn"
+      }
+    }
+  ]
+}
