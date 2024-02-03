@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getEnvVars } from '../lib/env.astro';
 import { apiUrl } from '../lib/index.astro';
 import { format } from 'date-fns';
@@ -24,13 +23,12 @@ const data = (await res.json()) as Data;
 ---
 
 <div class='rounded-md flex items-center max-w-full flex-col'>
-  <Image
+  <img
     class='rounded-lg shadow-md shadow-indigo-900'
     src={data.url}
     alt={data.title}
     width={450}
     height={450}
-    fetchpriority='high'
   />
 
   <h1 class='font-bold md:text-4xl text-center my-9 text-2xl'>{data.title}</h1>
