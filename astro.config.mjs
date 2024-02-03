@@ -5,10 +5,7 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  adapter: netlify({
-    imageCDN: true,
-    cacheOnDemandPages: true,
-  }),
+  adapter: netlify(),
   prefetch: {
     defaultStrategy: 'hover',
   },
