@@ -1,16 +1,16 @@
 ---
+import SpaceInfo from '../components/SpaceInfo.astro';
+import Seperator from '../components/ui/Seperator.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 
+export const prerender = false;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <div class='flex items-center w-full justify-center flex-col space-y-6'>
+    <h2 class='text-3xl md:text-4xl font-bold'>Today's Astro Pic</h2>
+    <Seperator class='w-24' />
+
+    <SpaceInfo />
+  </div>
+</MainLayout>

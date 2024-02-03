@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import { getEnvVars } from '../lib/env.astro';
+import { apiUrl } from '../lib/index.astro';
+import { format } from 'date-fns';
+
+type Data = {
+  date: string;
+  explanation: string;
+  media_type: string;
+  service_version: string;
+  title: string;
+  url: string;
+};
+
+const { apiKey } = getEnvVars();
+
+const date = format(new Date(), 'yyyy-MM-dd');
+const res = await fetch(`${apiUrl}?api_key=${apiKey}&date=${date}`, {
+  cache: 'force-cache',
+});
+
+const data = (await res.json()) as Data;
+---
+
+<div class='rounded-md flex items-center max-w-full flex-col'>
+  <Image
+    class='rounded-lg shadow-md shadow-indigo-900'
+    src={data.url}
+    alt={data.title}
+    width={450}
+    height={450}
+    fetchpriority='high'
+  />
+
+  <h1 class='font-bold md:text-4xl text-center my-9 text-2xl'>{data.title}</h1>
+  <p class='pb-3 text-base font-medium'>
+    Date: <span class='text-rose-500'>{format(data.date, 'do MMM, yy')}</span>
+  </p>
+
+  <p class='prose mt-3 leading-loose font-mono prose-base max-w-5xl dark:text-zinc-300'>
+    {data.explanation}
+  </p>
+</div>

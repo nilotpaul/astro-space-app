@@ -6,5 +6,5 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "jsxSingleQuote": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-astro"]
 }

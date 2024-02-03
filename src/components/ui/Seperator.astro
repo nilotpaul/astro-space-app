@@ -1,0 +1,11 @@
+---
+import { cn } from '../../utils/index.astro';
+
+type Props = astroHTML.JSX.DefinedIntrinsicElements['span'];
+
+const { class: styles, ...props } = Astro.props;
+---
+
+<span class={cn('h-px w-full bg-sky-600', styles)} {...props}>
+  <slot />
+</span>

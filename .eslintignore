@@ -3,3 +3,4 @@ public
 src/types
 dist
 .astro
+*config.mjs

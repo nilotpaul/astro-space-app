@@ -1,0 +1,44 @@
+---
+import Container from '../components/ui/Container.astro';
+import Nav from '../components/Nav.astro';
+import GradiantBlob from '../components/GradiantBlob.astro';
+---
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return JSON.parse(localStorage.getItem('theme'));
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
+  window.localStorage.setItem('theme', JSON.stringify(theme));
+</script>
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body
+    class='antialiased mb-16 transition-colors duration-300 dark:bg-black dark:text-zinc-200 min-h-screen w-full font-sans'
+  >
+    <GradiantBlob />
+
+    <Nav />
+    <Container>
+      <slot />
+    </Container>
+  </body>
+</html>

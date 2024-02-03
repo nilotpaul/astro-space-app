@@ -1,0 +1,91 @@
+---
+import Button from './ui/Button.astro';
+import Container from './ui/Container.astro';
+---
+
+<script>
+  const toggle = document.getElementById('toggle');
+
+  if (toggle) {
+    let theme = JSON.parse(window.localStorage.getItem('theme')!) ?? 'dark';
+    toggle.addEventListener('click', () => {
+      if (theme === 'light') {
+        document.documentElement.classList.add('dark');
+        theme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        theme = 'light';
+      }
+
+      window.localStorage.setItem('theme', JSON.stringify(theme));
+      toggle.textContent = `mode: ${theme}`;
+    });
+  }
+</script>
+
+<script>
+  const theme = JSON.parse(window.localStorage.getItem('theme')!) ?? 'dark';
+  const toggle = document.getElementById('toggle');
+
+  if (toggle) {
+    document.addEventListener('DOMContentLoaded', () => {
+      toggle.textContent = `mode: ${theme}`;
+    });
+  }
+</script>
+
+<script>
+  const menu = document.querySelectorAll('a');
+  const pathname = window.location.pathname ?? '/';
+
+  if (menu) {
+    menu.forEach((link) => {
+      if (link.href.split('/')[menu.length] === pathname.replace('/', '') && link.id === 'nav') {
+        link.classList.add('text-sky-400');
+        link.classList.add('underline');
+      }
+    });
+  }
+</script>
+
+<nav
+  class='top-0 left-0 dark:bg-black/80 mb-6 backdrop-blur-md sticky my-auto border-b-[1px] dark:border-zinc-800'
+>
+  <Container class='h-16 flex justify-between items-center w-full'>
+    <a href='/' class='text-lg md:text-2xl -space-x-1.5 cursor-pointer font-bold'>
+      <span class='text-transparent bg-gradient-to-r from-sky-400 bg-clip-text to-blue-400'
+        >Space</span
+      >
+      <span class='text-transparent bg-gradient-to-r to-pink-500 bg-clip-text from-purple-400'
+        >Insider</span
+      ></a
+    >
+
+    <ul class='items-center gap-9 font-medium hidden sm:flex'>
+      <a id='nav' href='/' class='hover:text-sky-400 hover:underline cursor-pointer'>Home</a>
+      <a id='nav' href='/about' class='hover:text-sky-400 hover:underline cursor-pointer'>About</a>
+    </ul>
+
+    <div class='sm:hidden'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='2'
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        class='lucide lucide-menu'
+        ><line x1='4' x2='20' y1='12' y2='12'></line><line x1='4' x2='20' y1='6' y2='6'></line><line
+          x1='4'
+          x2='20'
+          y1='18'
+          y2='18'></line>
+      </svg>
+    </div>
+
+    <Button id='toggle' class='capitalize hidden sm:inline-flex' />
+  </Container>
+</nav>

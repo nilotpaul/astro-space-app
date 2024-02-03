@@ -1,0 +1,25 @@
+---
+import { cn } from '../../utils/index.astro';
+
+type Props = {
+  variant?: 'ghost' | 'danger';
+  size?: 'sm' | 'lg';
+} & astroHTML.JSX.ButtonHTMLAttributes;
+
+const { variant, size, class: styles, ...props } = Astro.props;
+---
+
+<button
+  class={cn(
+    'btn hover:opacity-85 hover:scale-[0.98] duration-200 font-medium p-4 h-6 px-2.5 dark:bg-white w-fit inline-flex items-center gap-1.5 text-sm dark:text-gray-900 transition-all text-white rounded-md bg-gray-900',
+    {
+      'dark:text-white text-white bg-rose-600 dark:bg-rose-600': variant === 'danger',
+      'dark:bg-inherit bg-inherit text-black dark:text-white dark:hover:bg-zinc-900 hover:bg-gray-200':
+        variant === 'ghost',
+      'p-1.5 px-1.5 text-xs': size === 'sm',
+      'py-4 text-base h-9 px-3': size === 'lg',
+    },
+    styles
+  )}
+  {...props}><slot /></button
+>

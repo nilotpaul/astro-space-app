@@ -1,0 +1,13 @@
+---
+import { cn } from '../../utils/index.astro';
+
+type Props = {
+  class?: string;
+};
+
+const props = Astro.props;
+---
+
+<div class={cn('mx-auto max-w-7xl px-3 md:px-6', props.class)}>
+  <slot />
+</div>
