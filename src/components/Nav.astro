@@ -61,31 +61,25 @@ import Container from './ui/Container.astro';
       ></a
     >
 
-    <ul class='items-center gap-9 font-medium hidden sm:flex'>
-      <a id='nav' href='/' class='hover:text-sky-400 hover:underline cursor-pointer'>Home</a>
-      <a id='nav' href='/about' class='hover:text-sky-400 hover:underline cursor-pointer'>About</a>
+    <ul class='items-center hidden sm:flex gap-9 font-medium'>
+      <a id='nav' href='/' class='hover:text-sky-400 hidden sm:block hover:underline cursor-pointer'
+        >Home</a
+      >
+      <a
+        id='nav'
+        href='/about'
+        class='hover:text-sky-400 text-sm md:text-base hover:underline cursor-pointer'>About</a
+      >
     </ul>
 
-    <div class='sm:hidden'>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='24'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        stroke-width='2'
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        class='lucide lucide-menu'
-        ><line x1='4' x2='20' y1='12' y2='12'></line><line x1='4' x2='20' y1='6' y2='6'></line><line
-          x1='4'
-          x2='20'
-          y1='18'
-          y2='18'></line>
-      </svg>
+    <div class='flex items-center gap-3.5'>
+      <a
+        id='nav'
+        href='/about'
+        class='hover:text-sky-400 sm:hidden text-sm md:text-base hover:underline cursor-pointer'
+        >About</a
+      >
+      <Button id='toggle' class='capitalize p-1.5 px-1.5 text-xs sm:p-4 sm:px-2.5 sm:text-sm' />
     </div>
-
-    <Button id='toggle' class='capitalize hidden sm:inline-flex' />
   </Container>
 </nav>

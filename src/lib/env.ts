@@ -1,4 +1,3 @@
----
 export const getEnvVars = () => {
   const apiKey = import.meta.env.API_KEY;
 
@@ -8,4 +7,3 @@ export const getEnvVars = () => {
     apiKey,
   };
 };
----

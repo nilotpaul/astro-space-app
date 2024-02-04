@@ -1,6 +1,6 @@
 ---
-import { getEnvVars } from '../lib/env.astro';
-import { apiUrl } from '../lib/index.astro';
+import { getEnvVars } from '../lib/env.ts';
+import { apiUrl } from '../lib';
 import { format } from 'date-fns';
 
 type Data = {
@@ -22,7 +22,7 @@ const res = await fetch(`${apiUrl}?api_key=${apiKey}&date=${date}`, {
 const data = (await res.json()) as Data;
 ---
 
-<div class='rounded-md flex items-center max-w-full flex-col'>
+<div class='rounded-md flex items-center justify-center max-w-full flex-col'>
   <img
     class='rounded-lg shadow-md shadow-indigo-900'
     src={data.url}
@@ -31,8 +31,8 @@ const data = (await res.json()) as Data;
     height={450}
   />
 
-  <h1 class='font-bold md:text-4xl text-center my-9 text-2xl'>{data.title}</h1>
-  <p class='pb-3 text-base font-medium'>
+  <h1 class='font-bold w-full md:text-4xl text-center my-9 text-2xl'>{data.title}</h1>
+  <p class='pb-3 text-base w-full text-center font-medium'>
     Date: <span class='text-rose-500'>{format(data.date, 'do MMM, yy')}</span>
   </p>
 
